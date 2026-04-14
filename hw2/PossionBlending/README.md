@@ -26,3 +26,18 @@
 2. 坐标鲁棒性：函数显式地将输入点转换为 np.int32，有效防止了坐标偏移或浮点数导致的边界锯齿问题。
 
 3. 二值化表征：采用 0/255 的标准二值格式，为后续 PyTorch 张量转换和 torch.where 的像素索引提供了精准的逻辑支持。
+
+## 运行代码
+
+在当前终端中运行：
+
+``` 
+cd PossionBlending/Code
+```
+然后执行：
+
+```
+python run_blending_gradio.py
+```
+在打开的网页gradio端中选择前景和背景图片，使用鼠标左键在前景图片上选取点进行多边形选择，选择完毕后点击close polygen按钮然后点击Blend按钮，即可执行Poisson Blending。运行结果如下图所示：
+
