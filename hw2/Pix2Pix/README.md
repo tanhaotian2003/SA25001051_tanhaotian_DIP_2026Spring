@@ -24,7 +24,13 @@
 
 ## 实验结果
 
-### 训练集效果展示
+### 训练集效果展示(部分)
 
 ![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/train/result_5.png)
 ![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/train/result_4.png)
+
+可以看出，模型在训练集上表现良好，Loss处于较低的水平(0.02)
+
+### 测试集效果展示(部分)
+![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/val/result_1.png)
+![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/val/result_2.png)
