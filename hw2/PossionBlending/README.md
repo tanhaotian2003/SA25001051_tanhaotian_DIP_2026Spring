@@ -40,4 +40,5 @@ cd PossionBlending/Code
 python run_blending_gradio.py
 ```
 在打开的网页gradio端中选择前景和背景图片，使用鼠标左键在前景图片上选取点进行多边形选择，选择完毕后点击close polygen按钮然后点击Blend按钮，即可执行Poisson Blending。运行结果如下图所示：
+![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/PossionBlending/Result/result.webp)
 
