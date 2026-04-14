@@ -34,3 +34,9 @@
 ### 测试集效果展示(部分)
 ![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/val/result_1.png)
 ![image](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw2/Pix2Pix/Result/val/result_2.png)
+
+可以看出，模型在测试集上也表现良好，Validation Loss较低（0.06）且对于epoch稳定，说明我们训练的模型有着较好的泛化能力。
+## 实验总结 
+本实验 验证了采用残差连接的 ``U-Net``网络架构 在保持图像结构信息，对图像进行语义划分方面的优越性。同时分析了不同batchsize对训练过程的影响。
+
+
