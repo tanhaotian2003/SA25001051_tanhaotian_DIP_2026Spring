@@ -14,6 +14,20 @@
 3. **参数化与优化**：使用 Euler 角参数化旋转（推荐），使用 PyTorch 的优化器（如 Adam）进行梯度下降。
 4. **可视化与评估**：展示优化过程中 loss 的变化曲线，以及最终重建的 3D 点云（保存为带颜色的 OBJ 文件，颜色从 `points3d_colors.npy` 读取）。
 
+### 代码运行方式:
+
+1. 拉取仓库，执行:
+   ```
+   cd hw3/BA
+   ```
+2. 安装依赖
+
+  ```setup
+   pip install -r requirements.txt 
+```
+3. a
+4.  
+
 
 ## COLMAP
 
