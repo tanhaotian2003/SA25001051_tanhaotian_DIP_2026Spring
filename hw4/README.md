@@ -83,7 +83,7 @@ $$
 
 其中 **μᵢ** 与 **Σᵢ** 为投影后的 2D 高斯中心与协方差。
 
-> **TODO**：在 [gaussian_renderer.py#L61](gaussian_renderer.py#L61) 中计算 Gaussian 取值。
+> **本次实验已完成**：在 [gaussian_renderer.py#L61](gaussian_renderer.py#L61) 中计算 Gaussian 取值。
 
 ### 2.4 Volume Rendering via α-blending
 
