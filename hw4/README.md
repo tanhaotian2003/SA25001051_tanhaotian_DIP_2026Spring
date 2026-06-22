@@ -1,6 +1,6 @@
 # Assignment 4 - Implement Simplified 3D Gaussian Splatting
 
-### In this assignment, you will implement a simplified version of 3D Gaussian Splatting (3DGS) in pure PyTorch — a complete pipeline that reconstructs a 3D scene from multi-view images via differentiable rasterization of 3D Gaussians.
+### 本次实验通过纯pytorch框架补齐了简化版3DGS流程
 
 ### Resources:
 - [Paper: 3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/3d_gaussian_splatting_low.pdf)
@@ -60,7 +60,7 @@ python debug_mvs_by_projecting_pts.py --data_dir data/chair
 
 [gaussian_model.py#L32](gaussian_model.py#L32) 已实现这些参数的初始化。
 
-> **TODO**：在 [gaussian_model.py#L103](gaussian_model.py#L103) 中由四元数和缩放参数构造 **3D 协方差矩阵**。
+> **本次实验已完成**:在 [gaussian_model.py#L103](gaussian_model.py#L103) 中由四元数和缩放参数构造 **3D 协方差矩阵**。
 
 ### 2.2 Project 3D Gaussians to 2D
 
@@ -71,7 +71,7 @@ python debug_mvs_by_projecting_pts.py --data_dir data/chair
 
 投影后的 2D 协方差为 $\Sigma' = J W \Sigma W^T J^T$。
 
-> **TODO**：在 [gaussian_renderer.py#L26](gaussian_renderer.py#L26) 中实现 3D → 2D 投影。
+> **本次实验已完成**：在 [gaussian_renderer.py#L26](gaussian_renderer.py#L26) 中实现了 3D → 2D 投影。
 
 ### 2.3 Compute 2D Gaussian Values
 
@@ -95,7 +95,7 @@ $$
 
 最终像素颜色由各高斯按 α-blending 累加（paper 公式 1-3）。
 
-> **TODO**：在 [gaussian_renderer.py#L83](gaussian_renderer.py#L83) 中实现最终渲染。
+> **本次实验已完成**：在 [gaussian_renderer.py#L83](gaussian_renderer.py#L83) 中实现最终渲染。
 
 ### Train your 3DGS
 
@@ -124,6 +124,7 @@ up 轴由训练相机的 y 轴平均自动估计（NeRF 合成数据图像均为
 ## Task 3: Compare with the Official 3DGS Implementation
 
 本作业为纯 PyTorch 实现，训练速度与显存效率远不如官方实现，且未实现 adaptive Gaussian densification 等关键模块。请使用相同数据集运行 [官方 3DGS](https://github.com/graphdeco-inria/gaussian-splatting)，从**渲染质量、训练速度、显存占用**三方面进行对比，并在报告中讨论差异来源。
+
 
 ---
 
