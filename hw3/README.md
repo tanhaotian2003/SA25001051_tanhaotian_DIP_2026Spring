@@ -38,8 +38,13 @@
 ## COLMAP
 
 该过程中使用COLMAP的命令行工具，对```data/image/```中的50张照片进行渲染
+#### 运行方式:
+进入终端，执行命令:
+   ```
+   bash run_colmap.sh
+```
 
-#### 具体步骤：
+#### 具体步骤:
 
 1. **特征提取** (Feature Extraction)
 2. **特征匹配** (Feature Matching)
