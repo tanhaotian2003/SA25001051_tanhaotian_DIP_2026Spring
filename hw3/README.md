@@ -16,19 +16,24 @@
 
 ### 代码运行方式:
 
-1. 拉取仓库，执行:
+#### 1. 拉取仓库，执行:
    ```
    cd hw3/BA
-   ```
-2. 安装依赖
+```
+#### 2. 安装依赖
 
   ```setup
    pip install -r requirements.txt 
 ```
-3. a
-4.  
+#### 3. 执行Bundle_Adjustment:
+   ```
+   python Bundle_Adjustment_v2.py
+```
 
-
+#### 4.  数据可视化:
+   ```
+   python visualize_data.py
+```
 ## COLMAP
 
 该过程中使用COLMAP的命令行工具，对```data/image/```中的50张照片进行渲染
