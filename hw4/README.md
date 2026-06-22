@@ -285,27 +285,27 @@ O(N \times H \times W)
 
 ---
 
-#  4. 总体差异总结
+###  4. 总体差异总结
 
 三者差异可以归因于以下三个核心因素：
 
-##  (1) 缺少 Adaptive Densification
+####  (1) 缺少 Adaptive Densification
 - 固定 Gaussian 数量
 - 表达能力不足
 
-##  (2) 缺少 CUDA 优化 Rasterizer
+####  (2) 缺少 CUDA 优化 Rasterizer
 - 无 tile-based rendering
 - 无 kernel fusion
 - Python/PyTorch overhead 大
 
-##  (3) 缺少 Sparse Memory Management
+####  (3) 缺少 Sparse Memory Management
 - 无 pruning
 - 无动态 Gaussian 管理
 - 中间张量占用显存较高
 
 ---
 
-# 5. 核心结论
+### 5. 核心结论
 
 官方 3D Gaussian Splatting 的性能优势并不仅来源于其高斯表示本身，而更关键在于其完整的工程优化设计，包括：
 
@@ -319,7 +319,6 @@ O(N \times H \times W)
 
 ---
 
-### Requirements:
-- 请自行环境配置，推荐使用 [conda 环境](https://docs.anaconda.com/miniconda/)
+
 
 
