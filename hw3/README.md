@@ -34,6 +34,7 @@
    ```
    python visualize_data.py
 ```
+将运行得到的点云通过Meshlab打开，所得效果在[BA_demo.gif](https://github.com/tanhaotian2003/SA25001051_tanhaotian_DIP_2026Spring/blob/main/hw3/BA/BA_demo.gif)中展示。
 ## COLMAP
 
 该过程中使用COLMAP的命令行工具，对```data/image/```中的50张照片进行渲染
