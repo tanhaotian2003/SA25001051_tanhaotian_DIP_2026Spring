@@ -125,9 +125,9 @@ up 轴由训练相机的 y 轴平均自动估计（NeRF 合成数据图像均为
 
 本作业为纯 PyTorch 实现，训练速度与显存效率远不如官方实现，且未实现 adaptive Gaussian densification 等关键模块。请使用相同数据集运行 [官方 3DGS](https://github.com/graphdeco-inria/gaussian-splatting)，从**渲染质量、训练速度、显存占用**三方面进行对比。
 
-# 🎨 1. 渲染质量对比（Rendering Quality）
+### 1. 渲染质量对比（Rendering Quality）
 
-## ✔ 官方 3DGS
+####  官方 3DGS
 
 官方实现能够生成：
 
@@ -136,7 +136,7 @@ up 轴由训练相机的 y 轴平均自动估计（NeRF 合成数据图像均为
 - 纹理区域具有良好的高频细节表达
 - 多视角一致性较强（view consistency）
 
-## ✔ 本次 PyTorch 实现
+####  本次 PyTorch 实现
 
 本次简化实现的结果表现为：
 
@@ -147,9 +147,9 @@ up 轴由训练相机的 y 轴平均自动估计（NeRF 合成数据图像均为
 
 ---
 
-## 🧠 原理分析（关键差异来源）
+###  原理分析（关键差异来源）
 
-### ⭐ 1. 是否具备 Adaptive Densification（自适应密度控制）
+####  1. 是否具备 Adaptive Densification（自适应密度控制）
 
 - 官方方法：
   - 根据重建误差动态**增加/分裂 Gaussian**
@@ -161,12 +161,12 @@ up 轴由训练相机的 y 轴平均自动估计（NeRF 合成数据图像均为
   - 无法根据场景复杂度调整密度
   - 表达能力受限
 
-👉 结论：  
+ 结论：  
 官方方法在复杂区域具有更高表达能力，因此细节更清晰。
 
 ---
 
-### ⭐ 2. 表示能力差异
+####  2. 表示能力差异
 
 Gaussian Splatting 的本质是：
 
@@ -179,15 +179,15 @@ Gaussian Splatting 的本质是：
 
 ---
 
-# ⚡ 2. 训练速度对比（Training Speed）
+###  2. 训练速度对比（Training Speed）
 
-## ✔ 官方 3DGS
+####  官方 3DGS
 
 - 可达到接近实时训练/渲染
 - GPU utilization 高
 - iteration throughput 高
 
-## ✔ 本次 PyTorch 实现
+####  本次 PyTorch 实现
 
 - 训练速度明显较慢
 - 单 iteration 耗时较长
@@ -195,9 +195,9 @@ Gaussian Splatting 的本质是：
 
 ---
 
-## 🧠 原理分析（核心瓶颈）
+##  原理分析（核心瓶颈）
 
-### ⭐ 1. CUDA vs PyTorch 实现差异
+###  1. CUDA vs PyTorch 实现差异
 
 官方方法使用：
 
@@ -205,7 +205,7 @@ Gaussian Splatting 的本质是：
 - tile-based 并行 splatting
 - kernel fusion（减少 memory IO）
 
-👉 复杂度优化：
+ 复杂度优化：
 
 \[
 O(N \times H \times W) \rightarrow \text{高度并行优化}
@@ -219,7 +219,7 @@ O(N \times H \times W) \rightarrow \text{高度并行优化}
 - 存在 Python 级循环（alpha blending）
 - 未进行 kernel fusion
 
-👉 实际复杂度：
+ 实际复杂度：
 
 \[
 O(N \times H \times W)
@@ -227,7 +227,7 @@ O(N \times H \times W)
 
 ---
 
-### ⭐ 2. Rasterization 方式差异
+###  2. Rasterization 方式差异
 
 - 官方：
   - GPU tile-based rendering（局部区域并行计算）
@@ -235,19 +235,19 @@ O(N \times H \times W)
 - 本实现：
   - 全图逐 Gaussian 计算
 
-👉 导致计算开销显著增加
+ 导致计算开销显著增加
 
 ---
 
-# 💾 3. 显存占用对比（Memory Usage）
+###  3. 显存占用对比（Memory Usage）
 
-## ✔ 官方 3DGS
+##  官方 3DGS
 
 - 显存占用较低
 - 支持 large-scale scene
 - Gaussian 可动态裁剪
 
-## ✔ 本次 PyTorch 实现
+## 本次 PyTorch 实现
 
 - 显存占用较高
 - 中间张量较多
@@ -255,9 +255,9 @@ O(N \times H \times W)
 
 ---
 
-## 🧠 原理分析
+##  原理分析
 
-### ⭐ 1. 是否使用 Sparse Gaussian 管理
+###  1. 是否使用 Sparse Gaussian 管理
 
 - 官方：
   - 会 prune 不重要 Gaussian
@@ -269,7 +269,7 @@ O(N \times H \times W)
 
 ---
 
-### ⭐ 2. 中间变量存储方式
+###  2. 中间变量存储方式
 
 本实现中存在：
 
@@ -277,7 +277,7 @@ O(N \times H \times W)
 - alpha map (N, H, W)
 - weight map (N, H, W)
 
-👉 导致显存复杂度：
+ 导致显存复杂度：
 
 \[
 O(N \times H \times W)
@@ -285,27 +285,27 @@ O(N \times H \times W)
 
 ---
 
-# 📌 4. 总体差异总结
+#  4. 总体差异总结
 
 三者差异可以归因于以下三个核心因素：
 
-## ⭐ (1) 缺少 Adaptive Densification
+##  (1) 缺少 Adaptive Densification
 - 固定 Gaussian 数量
 - 表达能力不足
 
-## ⭐ (2) 缺少 CUDA 优化 Rasterizer
+##  (2) 缺少 CUDA 优化 Rasterizer
 - 无 tile-based rendering
 - 无 kernel fusion
 - Python/PyTorch overhead 大
 
-## ⭐ (3) 缺少 Sparse Memory Management
+##  (3) 缺少 Sparse Memory Management
 - 无 pruning
 - 无动态 Gaussian 管理
 - 中间张量占用显存较高
 
 ---
 
-# 🎯 5. 核心结论（可用于总结段）
+# 5. 核心结论
 
 官方 3D Gaussian Splatting 的性能优势并不仅来源于其高斯表示本身，而更关键在于其完整的工程优化设计，包括：
 
